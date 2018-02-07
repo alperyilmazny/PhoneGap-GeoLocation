@@ -78,12 +78,12 @@ document.getElementById("GetPhoneLocation").addEventListener("click", function()
     if (!window.bb || !window.bb.position) return;
     document.getElementById("Latitude").innerHTML = "Latitude: " + window.bb.position.coords.latitude;
     document.getElementById("Longitude").innerHTML = "Longitude: " + window.bb.position.coords.longitude;
-    document.getElementById("Longitude").innerHTML = "Altitude: " + window.bb.position.coords.altitude;
-    document.getElementById("Longitude").innerHTML = "Accuracy: " + window.bb.position.coords.accuracy;
-    document.getElementById("Longitude").innerHTML = "Altitude Accuracy: " + window.bb.position.coords.altitudeAccuracy;
-    document.getElementById("Longitude").innerHTML = "Heading: " + window.bb.position.coords.heading;
-    document.getElementById("Longitude").innerHTML = "Speed: " + window.bb.position.coords.speed;
-    document.getElementById("Longitude").innerHTML = "Time stamp: " + window.bb.position.timestamp;
+    document.getElementById("Altitude").innerHTML = "Altitude: " + window.bb.position.coords.altitude;
+    document.getElementById("Accuracy").innerHTML = "Accuracy: " + window.bb.position.coords.accuracy;
+    document.getElementById("AltitudeAccuracy").innerHTML = "Altitude Accuracy: " + window.bb.position.coords.altitudeAccuracy;
+    document.getElementById("Heading").innerHTML = "Heading: " + window.bb.position.coords.heading;
+    document.getElementById("Speed").innerHTML = "Speed: " + window.bb.position.coords.speed;
+    document.getElementById("Timestamp").innerHTML = "Time stamp: " + window.bb.position.timestamp;
 });
 
 document.getElementById("GetPhoneInfo").addEventListener("click", function(){

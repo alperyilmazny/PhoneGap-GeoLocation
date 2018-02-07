@@ -39,35 +39,67 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
     <title>Hello World</title>
 </head>
 
 <body>
     <div>
-        <h3>PhoneGap Sample App</h3>
-        <div>
-            <button id="GetPhoneLocation">Find device location</button>
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Device Location</h3>
+                </div>
+                <div class="panel-body">
+                        <button id="GetPhoneLocation" class="btn btn-primary">Find device location</button>
+                        <div id="Latitude"></div>
+                        <div id="Longitude"></div>
+                        <div id="Altitude"></div>
+                        <div id="Accuracy"></div>
+                        <div id="AltitudeAccuracy"></div>
+                        <div id="Heading"></div>
+                        <div id="Speed"></div>
+                        <div id="Timestamp"></div>
+                </div>
+        </div>
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Device Info</h3>
+                </div>
+                <div class="panel-body">
+                        <button id="GetPhoneInfo" class="btn btn-primary">Find device info</button>
+                        <div id="Model"></div>
+                        <div id="Cordova"></div>
+                        <div id="Platform"></div>
+                        <div id="Serial"></div>
+                        <div id="Version"></div>
+                </div>
+        </div>
+        <!-- <div>
+            <button id="GetPhoneLocation" class="btn btn-success">Find device location</button>
             <div id="Latitude"></div>
             <div id="Longitude"></div>
             <div id="Altitude"></div>
             <div id="Accuracy"></div>
-            <div id="Altitude Accuracy"></div>
+            <div id="AltitudeAccuracy"></div>
             <div id="Heading"></div>
             <div id="Speed"></div>
             <div id="Timestamp"></div>
         </div>
-
+        <br><br>
         <div>
-            <button id="GetPhoneInfo">Find device info</button>
+            <button id="GetPhoneInfo" class="btn btn-success">Find device info</button>
             <div id="Model"></div>
             <div id="Cordova"></div>
             <div id="Platform"></div>
             <div id="Serial"></div>
             <div id="Version"></div>
-        </div>
+        </div> -->
     </div>
 
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     
     <script type="text/javascript">
