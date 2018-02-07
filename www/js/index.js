@@ -45,7 +45,7 @@ var app = {
 
         // Bind other plugins
         navigator.geolocation.getCurrentPosition(this.onGeoSuccess, this.onGeoError);
-        navigator.accelerometer.getCurrentAcceleration(this.onAccelerometerSuccess, this.onAccelerometerError);
+        //navigator.accelerometer.getCurrentAcceleration(this.onAccelerometerSuccess, this.onAccelerometerError);
 
     },
 
@@ -96,11 +96,17 @@ document.getElementById("GetPhoneInfo").addEventListener("click", function(){
     document.getElementById("Version").innerHTML = "Device Version: " + device.version;
 });
 
-document.getElementById("GetDeviceAcceleration").addEventListener("click", function(){
-    if (!window.bb || !window.bb.acceleration) return;
-    document.getElementById("AccelerationX").innerHTML = "Acceleration X: " + window.bb.acceleration.x;
-    document.getElementById("AccelerationY").innerHTML = "Acceleration Y: " + window.bb.acceleration.y;
-    document.getElementById("AccelerationZ").innerHTML = "Acceleration Z: " + window.bb.acceleration.z;
-    document.getElementById("Timestamp").innerHTML = "Time stamp: " + window.bb.acceleration.timestamp;
+// document.getElementById("GetDeviceAcceleration").addEventListener("click", function(){
+//     alert("Get Device Acceleration");
+//     if (!window.bb || !window.bb.acceleration) return;
+//     alert(window.bb.acceleration);
+//     document.getElementById("AccelerationX").innerHTML = "Acceleration X: " + window.bb.acceleration.x;
+//     document.getElementById("AccelerationY").innerHTML = "Acceleration Y: " + window.bb.acceleration.y;
+//     document.getElementById("AccelerationZ").innerHTML = "Acceleration Z: " + window.bb.acceleration.z;
+//     document.getElementById("Timestamp").innerHTML = "Time stamp: " + window.bb.acceleration.timestamp;
+// });
+
+document.getElementById("ShowDialog").addEventListener("click", function(){
+    navigator.notification.prompt("Hello people.");
 });
 
