@@ -17,28 +17,18 @@
  * under the License.
  */
 var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-
-
     onGeoSuccess: function(position) {
-        alert('Latitude: '          + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n' +
-              'Altitude: '          + position.coords.altitude          + '\n' +
-              'Accuracy: '          + position.coords.accuracy          + '\n' +
-              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-              'Heading: '           + position.coords.heading           + '\n' +
-              'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');
+        // alert('Latitude: '          + position.coords.latitude          + '\n' +
+        //       'Longitude: '         + position.coords.longitude         + '\n' +
+        //       'Altitude: '          + position.coords.altitude          + '\n' +
+        //       'Accuracy: '          + position.coords.accuracy          + '\n' +
+        //       'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+        //       'Heading: '           + position.coords.heading           + '\n' +
+        //       'Speed: '             + position.coords.speed             + '\n' +
+        //       'Timestamp: '         + position.timestamp                + '\n');
+
+        window.bb = {};
+        window.bb["position"] = position;
     },
 
     // onError Callback receives a PositionError object
@@ -48,18 +38,44 @@ var app = {
               'message: ' + error.message + '\n');
     },
 
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
 
         // Bind other plugins
-        //navigator.geolocation.getCurrentPosition(this.onGeoSuccess, this.onGeoError);
+        navigator.geolocation.getCurrentPosition(this.onGeoSuccess, this.onGeoError);
+
+    },
+
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        console.log("Device is ready.")
+        app.receivedEvent('deviceready');
+    },
+
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        console.log("Binding events");
+        
+        document.addEventListener('deviceready', app.onDeviceReady, false);
+    },
+
+    // Application Constructor
+    initialize: function() {
+        console.log("App is initializing");
+        app.bindEvents();
     }
+
 };
+
+document.getElementById("GetPhoneLocation").addEventListener("click", function(){
+    if (window.bb || window.bb.position) return;
+    document.getElementById("Latitude").innerHTML = window.bb.position.coords.latitude;
+    document.getElementById("Longitude").innerHTML = window.bb.position.coords.longitude;
+});

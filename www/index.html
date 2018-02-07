@@ -44,28 +44,29 @@
 
 <body>
     <div>
-        <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        var uluru = {lat: 40.7872137, lng: -73.5513191};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: uluru,
-          mapTypeId: google.maps.MapTypeId.HYBRID
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBq44SI1hAZO-opIy9mbunlMp6wW4Aivnk&callback=myMap">
-    </script>
+        <h3>PhoneGap Sample App</h3>
+        <div>
+            <button id="GetPhoneLocation">Find device location</button>
+            <div id="Latitude"></div>
+            <div id="Longitude"></div>
+            <div id="Altitude"></div>
+            <div id="Accuracy"></div>
+            <div id="Altitude Accuracy"></div>
+            <div id="Heading"></div>
+            <div id="Speed"></div>
+            <div id="Timestamp"></div>
+        </div>
+
+        <div>
+            <button id="GetPhoneInfo"></button>
+            <div id="Latitude"></div>
+            <div id="Longitude"></div>
+        </div>
     </div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    
     <script type="text/javascript">
         app.initialize();
     </script>
