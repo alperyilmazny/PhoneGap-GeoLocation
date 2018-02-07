@@ -18,15 +18,6 @@
  */
 var app = {
     onGeoSuccess: function(position) {
-        // alert('Latitude: '          + position.coords.latitude          + '\n' +
-        //       'Longitude: '         + position.coords.longitude         + '\n' +
-        //       'Altitude: '          + position.coords.altitude          + '\n' +
-        //       'Accuracy: '          + position.coords.accuracy          + '\n' +
-        //       'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-        //       'Heading: '           + position.coords.heading           + '\n' +
-        //       'Speed: '             + position.coords.speed             + '\n' +
-        //       'Timestamp: '         + position.timestamp                + '\n');
-
         window.bb = {};
         window.bb["position"] = position;
     },
@@ -38,12 +29,23 @@ var app = {
               'message: ' + error.message + '\n');
     },
 
+    onAccelerometerSuccess: function(acceleration) {
+        window.bb = {};
+        window.bb["acceleration"] = acceleration;
+    },
+
+    onAccelerometerError: function(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    },
+
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
 
         // Bind other plugins
         navigator.geolocation.getCurrentPosition(this.onGeoSuccess, this.onGeoError);
+        navigator.accelerometer.getCurrentAcceleration(this.onAccelerometerSuccess, this.onAccelerometerError);
 
     },
 
@@ -93,3 +95,12 @@ document.getElementById("GetPhoneInfo").addEventListener("click", function(){
     document.getElementById("Serial").innerHTML = "Device Serial: " + device.serial;
     document.getElementById("Version").innerHTML = "Device Version: " + device.version;
 });
+
+document.getElementById("GetDeviceAcceleration").addEventListener("click", function(){
+    if (!window.bb || !window.bb.acceleration) return;
+    document.getElementById("AccelerationX").innerHTML = "Acceleration X: " + window.bb.acceleration.x;
+    document.getElementById("AccelerationY").innerHTML = "Acceleration Y: " + window.bb.acceleration.y;
+    document.getElementById("AccelerationZ").innerHTML = "Acceleration Z: " + window.bb.acceleration.z;
+    document.getElementById("Timestamp").innerHTML = "Time stamp: " + window.bb.acceleration.timestamp;
+});
+
