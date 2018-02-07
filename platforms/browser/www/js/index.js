@@ -107,6 +107,11 @@ document.getElementById("GetPhoneInfo").addEventListener("click", function(){
 // });
 
 document.getElementById("ShowDialog").addEventListener("click", function(){
-    navigator.notification.prompt("Hello people.");
+    navigator.notification.confirm(
+        'You are the winner!', // message
+         function(){},            // callback to invoke with index of button pressed
+        'Game Over',           // title
+        ['Restart','Exit']     // buttonLabels
+    );
 });
 
