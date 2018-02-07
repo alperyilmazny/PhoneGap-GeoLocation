@@ -75,7 +75,7 @@ var app = {
 };
 
 document.getElementById("GetPhoneLocation").addEventListener("click", function(){
-    if (window.bb || window.bb.position) return;
+    if (!window.bb || !window.bb.position) return;
     document.getElementById("Latitude").innerHTML = window.bb.position.coords.latitude;
     document.getElementById("Longitude").innerHTML = window.bb.position.coords.longitude;
 });
